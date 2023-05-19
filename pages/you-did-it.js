@@ -67,7 +67,7 @@ export default function YouDidIt() {
 				className={page_styles.canvas}
 				camera={{
 					// position: [0, 0, 1000]
-					position: [0, 0, 100]
+					position: [0, 0, 80]
 				}}
 			>
 				<OrbitControls
@@ -81,6 +81,7 @@ export default function YouDidIt() {
 				/>
 				{/* <Star stars={2000}/> */}
 				<hemisphereLight
+					// castShadow
 					// skyColor={0xffffff}
 					skyColor={0xe580d4}
 					// groundColor={0x444444}
@@ -89,9 +90,10 @@ export default function YouDidIt() {
 					position={[-50,200,100]}
 				/>
 				<directionalLight 
+					castShadow
 					color={0xffffff}
 					intensity={1}
-					position={[-50,200,200]}
+					position={[0,200,200]}
 				/>
 				{/* <Text 
 					color="black"

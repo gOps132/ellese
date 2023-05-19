@@ -10,10 +10,10 @@ export default function Model(props) {
 	const group = useRef();
 	const { nodes, materials } = useGLTF('/models/Cake.glb')
 	return (
-		<group ref={group} {...props} dispose={null}>
-			<mesh geometry={nodes['Circle006-Mesh'].geometry} material={materials.F06292} />
-			<mesh geometry={nodes['Circle006-Mesh_1'].geometry} material={materials.FFFFFF} />
-			<mesh geometry={nodes['Circle006-Mesh_2'].geometry} material={materials['039BE5']} />
+		<group ref={group} {...props} dispose={null} >
+			<mesh geometry={nodes['Circle006-Mesh'].geometry} castShadow receiveShadow material={materials.F06292} />
+			<mesh geometry={nodes['Circle006-Mesh_1'].geometry} castShadow receiveShadow material={materials.FFFFFF} />
+			<mesh geometry={nodes['Circle006-Mesh_2'].geometry} castShadow receiveShadow material={materials['039BE5']} />
 		</group>
 	)
 }
