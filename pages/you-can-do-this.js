@@ -1,17 +1,17 @@
 import { use, useEffect, useState } from "react";
 
 import {Canvas, useFrame, useThree} from "@react-three/fiber";
-import styles from "../styles/Home.module.css";
+import styles from "@/styles/Home.module.css";
 
-import OrbitControls from "../components/orbit_controls";
+import OrbitControls from "@/components/orbit_controls";
 
-import Star from "../components/star";
+import Star from "@/components/star";
 
-import Model from "../components/Glasses";
+import Model from "@/components/Glasses";
 
-import Text from "../components/text";
+import Text from "@/components/text";
 
-export default function ycdt() {
+export default function YouCanDoThis() {
 	// var light = new THREE.DirectionalLight()
 	return (
 		<div className={styles.scene}>
@@ -53,7 +53,7 @@ export default function ycdt() {
 					position={[0,-40,0]} 
 					text={"I believe in YOU"}
 				/>
-				<Text 
+				<Text
 					position={[0,-50,0]} 
 					text={"- Gian"}
 				/>
