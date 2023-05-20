@@ -39,7 +39,10 @@ function Bob(props) {
 	)
 }
 
-export default function YouDidIt() {
+export default function YouDidIt() { 
+	const audioDom = useRef();
+	let [isPlaying, setIsPlaying] = useState(false);
+
 	const [windowSize, setWindowSize] = useState({
 		width: 2000,
 		height: 2000,
@@ -55,10 +58,17 @@ export default function YouDidIt() {
 		window.addEventListener("resize", handleResize);
 		handleResize();
 
+		// audioDom.current.play();
+		audioDom.current.play().catch((e) => {
+			window.addEventListener('click', () => {
+				setIsPlaying(!isPlaying);
+				audioDom.current.play();
+			})
+		}, {once:true});
+
 		// Remove event listener on cleanup
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
-
 	return (
 		<div className={styles.scene}>
 			<Confetti width={windowSize.width} height={windowSize.height} />
@@ -67,7 +77,7 @@ export default function YouDidIt() {
 				className={page_styles.canvas}
 				camera={{
 					// position: [0, 0, 1000]
-					position: [0, 0, 80]
+					position: [0, 0, 100]
 				}}
 			>
 				<OrbitControls
@@ -95,22 +105,28 @@ export default function YouDidIt() {
 					intensity={1}
 					position={[0,200,200]}
 				/>
-				{/* <Text 
-					color="black"
-					anchorX="center"
-					anchorY="middle">
-					YOU DID IT, CONGRATULATIONS!
-				</Text> */}
 				<Text 
 					position={[0,40,0]} 
 					text={"YOU DID IT, CONGRATULATIONS!"}
 				/>
-				<Text/>
+				{!isPlaying ?
+					<Text 
+						position={[0,-10,10]} 
+						text={"Click on me"}
+					/> : <></>
+				}
 				<Bob>
 					<Dancing position={[0,-25,0]} scale={0.35}/>
 					<Cake position={[0,-65,0]} scale={5}/>
 				</Bob>
 			</Canvas>
+			<div className={styles.player}>
+				<audio
+					src={"/audio/uptown-girl-compressed.mp3"}
+					autoPlay={true}
+					ref={audioDom}
+				/>
+			</div>
 		</div>	
 	)
 }

@@ -5,3 +5,10 @@
 	/* background: #000000; */
 	background: rgb(137, 135, 198);
 }
+
+.player {
+	visibility: hidden;
+	display: none;
+	position: fixed;
+	z-index: -110;
+}
